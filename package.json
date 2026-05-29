@@ -9,15 +9,21 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "server": "nodemon index.js",
+    "build": "npm run build",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^9.2.1",
     "cookie-session": "^2.1.1",
     "express": "^5.2.1",
+    "http-proxy-middleware": "^2.0.9",
     "mongodb": "^7.2.0",
     "mongoose": "^9.6.2",
+    "nodemon": "^3.1.14",
     "passport": "^0.5.3",
     "passport-google-oauth20": "^2.0.0"
   }
