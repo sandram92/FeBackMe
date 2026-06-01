@@ -1,7 +1,7 @@
 const passport = require("passport");
 
 module.exports = (app) => {
-  console.log("authRoutes loaded", app);
+  // console.log("authRoutes loaded", app);
   app.get(
     "/auth/google",
     passport.authenticate("google", {
