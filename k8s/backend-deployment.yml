@@ -18,8 +18,9 @@ spec:
     spec:
       containers:
         - name: backend
-          image: server-backend:latest
-          imagePullPolicy: Never
+          # image: server-backend:latest
+          image: ghcr.io/sandram92/server-backend:latest
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 8001
