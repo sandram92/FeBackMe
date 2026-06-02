@@ -16,6 +16,10 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 require("./routes/authRoutes")(app);
 
 const PORT = process.env.PORT || 8001;

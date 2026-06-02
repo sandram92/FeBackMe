@@ -4,7 +4,7 @@ metadata:
   name: frontend
 
 spec:
-  replicas: 1
+  replicas: 3
 
   selector:
     matchLabels:
@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: server-frontend:latest
-          imagePullPolicy: Never
+          image: ghcr.io/sandram92/server-frontend:latest
+          imagePullPolicy: Always
 
           ports:
             - containerPort: 3000

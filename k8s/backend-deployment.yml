@@ -4,7 +4,7 @@ metadata:
   name: backend
 
 spec:
-  replicas: 1
+  replicas: 3
 
   selector:
     matchLabels:
@@ -19,11 +19,25 @@ spec:
       containers:
         - name: backend
           # image: server-backend:latest
-          image: ghcr.io/sandram92/server-backend:latest
+          image: ghcr.io/sandram92/server-backend:b8ad78375e778da7ef2a43523b87bef25b5d65fd
           imagePullPolicy: Always
 
           ports:
             - containerPort: 8001
+
+          livenessProbe:
+           httpGet:
+            path: /health
+            port: 8001
+           initialDelaySeconds: 15
+           periodSeconds: 10
+
+          readinessProbe:
+           httpGet:
+            path: /health
+            port: 8001
+           initialDelaySeconds: 5
+           periodSeconds: 5
 
           envFrom:
             - secretRef:
