@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
   packages: write
-  
+
 jobs:
   backend:
     runs-on: ubuntu-latest
@@ -25,7 +25,17 @@ jobs:
 
       - run: npm ci
 
-      - run: docker build -t server-backend:ci .
+      - name: Log in to GHCR
+        uses: docker/login-action@v3 
+        with: 
+         registry: ghcr.io
+         username: ${{ github.actor }} 
+         password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build backend image 
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/server-backend:latest . 
+      - name: Push backend image 
+        run: docker push ghcr.io/${{ github.repository_owner }}/server-backend:latest.
 
   frontend:
     runs-on: ubuntu-latest
@@ -47,4 +57,14 @@ jobs:
 
       - run: CI=false npm run build
 
-      - run: docker build -t server-frontend:ci .
+      - name: Log in to GHCR
+        uses: docker/login-action@v3 
+        with: 
+         registry: ghcr.io
+         username: ${{ github.actor }} 
+         password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build frontend image 
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/server-frontend:latest . 
+      - name: Push frontend image 
+        run: docker push ghcr.io/${{ github.repository_owner }}/server-frontend:latest
