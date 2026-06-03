@@ -20,7 +20,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
+ res.status(200).json({ status: "ok", version: "v2" });
 });
 
 require("./routes/authRoutes")(app);

@@ -19,7 +19,7 @@ spec:
       containers:
         - name: backend
           # image: server-backend:latest
-          image: ghcr.io/sandram92/server-backend:72359b638849fa46a239d8f095fe560a0da23134
+          image: ghcr.io/sandram92/server-backend:6934e2d15cc9d857b30cc4a8ec894d1e857bfe9e
           imagePullPolicy: Always
 
           ports:
@@ -29,7 +29,7 @@ spec:
             httpGet:
              path: /health
              port: 8001
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 5
             failureThreshold: 20  
 
