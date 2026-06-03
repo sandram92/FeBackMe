@@ -19,25 +19,39 @@ spec:
       containers:
         - name: backend
           # image: server-backend:latest
-          image: ghcr.io/sandram92/server-backend:b8ad78375e778da7ef2a43523b87bef25b5d65fd
+          image: ghcr.io/sandram92/server-backend:72359b638849fa46a239d8f095fe560a0da23134
           imagePullPolicy: Always
 
           ports:
             - containerPort: 8001
 
-          livenessProbe:
-           httpGet:
-            path: /health
-            port: 8001
-           initialDelaySeconds: 15
-           periodSeconds: 10
+          startupProbe:
+            httpGet:
+             path: /health
+             port: 8001
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            failureThreshold: 20  
 
           readinessProbe:
            httpGet:
             path: /health
             port: 8001
-           initialDelaySeconds: 5
-           periodSeconds: 5
+           initialDelaySeconds: 20
+           periodSeconds: 10
+           timeoutSeconds: 3
+           failureThreshold: 6
+
+          livenessProbe:
+           httpGet:
+            path: /health
+            port: 8001
+           initialDelaySeconds: 40
+           periodSeconds: 10
+           timeoutSeconds: 3
+           failureThreshold: 3
+
+       
 
           envFrom:
             - secretRef:
