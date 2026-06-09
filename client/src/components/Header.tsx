@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import type { AuthProps, RootState } from "../types";
 
-class Header extends Component {
+class Header extends Component<AuthProps> {
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -31,7 +32,7 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({ auth }: RootState): AuthProps {
   return { auth };
 }
 export default connect(mapStateToProps)(Header);

@@ -9,7 +9,11 @@ import Landing from "./Landing";
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
-class App extends Component {
+type AppProps ={
+  fetchUser: () => void
+}
+
+class App extends Component<AppProps> {
   componentDidMount() {
     this.props.fetchUser();
   }

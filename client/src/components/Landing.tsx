@@ -1,8 +1,10 @@
 import React from "react";
 import { Component } from "react";
 import { connect } from "react-redux";
+import type { AuthProps, RootState } from "../types";
 
-class  Landing extends Component {
+
+class Landing extends Component<AuthProps> {
   componentDidMount() {
     console.log("Landing component rendered", this.props.auth);
   }
@@ -17,7 +19,7 @@ class  Landing extends Component {
   }
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({ auth }: RootState): AuthProps {
   return { auth };
 }
 export default connect(mapStateToProps)(Landing);
