@@ -1,2 +1,6 @@
 node_modules
 dev.js
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl

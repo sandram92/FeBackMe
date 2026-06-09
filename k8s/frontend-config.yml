@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: frontend-config
+
+data:
+  REACT_APP_API_PROXY: "http://backend:8001"
+  REACT_APP_ENV: "development"
+  REACT_APP_APP_NAME: "My App"

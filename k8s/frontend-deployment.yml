@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
+
 metadata:
   name: frontend
 
@@ -24,6 +25,14 @@ spec:
           ports:
             - containerPort: 3000
 
-          env:
-            - name: REACT_APP_API_PROXY
-              value: http://backend:8001
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+
+          envFrom:
+             - configMapRef:
+                name: frontend-config
