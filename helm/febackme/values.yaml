@@ -162,3 +162,14 @@ affinity: {}
 
 backend:
   replicas: 3
+  image:
+    repository: ghcr.io/sandram92/server-backend
+    tag: "5bdaffe5ee08265f7a9efe14c4e7b97c5a4519db"
+    pullPolicy: Always
+
+frontend:
+  replicas: 2
+  image:
+    repository: ghcr.io/sandram92/client-frontend
+    tag: "def456"
+    pullPolicy: Always

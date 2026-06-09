@@ -19,7 +19,7 @@ spec:
       containers:
         - name: backend
           # image: server-backend:latest
-          image: ghcr.io/sandram92/server-backend:b91e63024b3bd991bd14893a2dd926a2b8527198
+          image: ghcr.io/sandram92/server-backend:5bdaffe5ee08265f7a9efe14c4e7b97c5a4519db
           imagePullPolicy: Always
 
           ports:

@@ -19,8 +19,8 @@ spec:
       containers:
         - name: backend
           # image: server-backend:latest
-          image: ghcr.io/sandram92/server-backend:b91e63024b3bd991bd14893a2dd926a2b8527198
-          imagePullPolicy: Always
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
 
           ports:
             - containerPort: 8001
