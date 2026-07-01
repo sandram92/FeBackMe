@@ -83,10 +83,12 @@ function registerStripeWebhook(app) {
     },
   );
 }
-
+// https://febackme.onrender.com/api/stripe/webhook
 function registerBillingRoutes(app) {
   app.post("/api/create-checkout-session", requireLogin, async (req, res) => {
     const origin = req.get("origin") || `${req.protocol}://${req.get("host")}`;
+
+    console.log("origin", origin);
 
     try {
       const session = await stripe.checkout.sessions.create({

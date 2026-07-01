@@ -12,7 +12,8 @@
     "server": "nodemon index.js",
     "build": "npm run build",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "webhook": ".local/bin/stripe listen --forward-to localhost:8001/api/stripe/webhook"
   },
   "author": "",
   "license": "ISC",
