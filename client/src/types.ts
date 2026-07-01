@@ -1,6 +1,7 @@
 export type AuthUser = {
     _id: string;
     googleId: string;
+    credits: number;
 };
 
 export type AuthState = AuthUser | false | null;

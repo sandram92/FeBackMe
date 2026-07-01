@@ -4,3 +4,7 @@ dev.js
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+.env
+.env.development
+.env.production
+.local/
